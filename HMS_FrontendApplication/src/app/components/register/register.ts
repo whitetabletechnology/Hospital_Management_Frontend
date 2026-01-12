@@ -1,19 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-register',
-  standalone: false,
   templateUrl: './register.html',
-  styleUrl: './register.css',
+  styleUrls: ['./register.css'],
+  standalone: false
 })
-export class Register {
+export class Register implements OnInit {
 
-    name = '';
-  email = '';
-  password = '';
+  registerForm!: FormGroup;
 
-  register() {
-    console.log(this.name, this.email, this.password);
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
+  onSubmit(): void {
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
+    const userData = {
+      ...this.registerForm.value,
+      role: 'PATIENT'   //  default role set here
+    };
+
+    this.authService.register(userData).subscribe({
+      next: (response) => {
+        alert('Registered Successfully!');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.log(err);
+        alert('Registration failed');
+      }
+    });
+  }
 }

@@ -12,7 +12,9 @@ const routes: Routes = [
   { path: 'doctor-dashboard', component: DoctorDashboard, canActivate: [AuthGuard] },
   { path: 'patient-dashboard', component: PatientDashboard, canActivate: [AuthGuard] },
   { path: 'login', component: Login },
+  { path: 'register', component: Register },
   { path: '**', redirectTo: 'login' }
+  
 ];
 
 @NgModule({

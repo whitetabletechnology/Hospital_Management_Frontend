@@ -1,0 +1,106 @@
+/* ====== Global Container ====== */
+.register-container {
+  width: 380px;
+  margin: 60px auto;
+  padding: 35px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Title */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #2d4a60;
+  font-weight: 700;
+}
+
+/* ===== Form Styling ===== */
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #2d4a60;
+}
+
+/* Input fields */
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #c7d8e2;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+  background: #ffffff;
+}
+
+input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+}
+
+/* Error Text */
+small {
+  color: #d9534f;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+/* ===== Submit Button ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+button:disabled {
+  background: #9bbfe8;
+  cursor: not-allowed;
+}
+
+/* Login Link */
+p {
+  text-align: center;
+  margin-top: 15px;
+  color: #2d4a60;
+  font-size: 14px;
+}
+
+a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
