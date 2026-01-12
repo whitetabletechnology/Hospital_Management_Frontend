@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Auth } from '../services/auth';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-login',
-  standalone: false,
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css'],
+  standalone:false
 })
 export class Login implements OnInit {
 
-  
   loginForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private authService: Auth
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,21 +26,38 @@ export class Login implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
+
     if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     this.authService.login(this.loginForm.value).subscribe({
-      next: (res: any) => {
-        console.log('Login success', res);
-        alert('Login successful');
+      next: (response) => {
+
+        this.authService.saveAuthData(response);
+
+        if (response.role === 'ADMIN') {
+          this.router.navigate(['/admin-dashboard']);
+        } 
+        else if (response.role === 'DOCTOR') {
+          this.router.navigate(['/doctor-dashboard']);
+        } 
+        else if (response.role === 'PATIENT') {
+          this.router.navigate(['/patient-dashboard']);
+        } 
+        else if (response.role === 'STAFF') {
+          this.router.navigate(['/staff-dashboard']);
+        } 
+        else {
+          alert('Invalid role');
+          this.authService.logout();
+        }
       },
-      error: (err: any) => {
-        console.error(err);
-        alert('Invalid credentials');
+      error: () => {
+        alert('Invalid email or password');
       }
     });
   }
-
 }

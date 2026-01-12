@@ -1,26 +1,118 @@
+/* Page background */
+body {
+  background: linear-gradient(135deg, #1976d2, #42a5f5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card container */
 .login-container {
-  width: 350px;
+  width: 380px;
   margin: 100px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  padding: 35px 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease-in-out;
 }
 
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+/* Form group */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
+/* Labels */
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+/* Inputs */
 input {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
+/* Input focus effect */
+input:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Error message */
+.error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Button */
 button {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #1976d2, #1e88e5);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
+/* Button hover */
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1565c0, #1976d2);
+  transform: translateY(-1px);
+}
+
+/* Button disabled */
+button:disabled {
+  background: #b0bec5;
+  cursor: not-allowed;
+}
+
+/* Register link */
+p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+p a {
+  color: #1976d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
 }

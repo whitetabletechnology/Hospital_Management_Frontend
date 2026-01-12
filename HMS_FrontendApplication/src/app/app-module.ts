@@ -1,9 +1,11 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RouterModule } from '@angular/router';
+
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { Login } from './components/login/login';
+import { Login} from './components/login/login';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Register } from './components/register/register';
 import { FormsModule } from '@angular/forms';
@@ -28,7 +30,8 @@ import { StaffDashboard } from './components/staff/staff-dashboard/staff-dashboa
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners()
