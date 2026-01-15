@@ -6,6 +6,9 @@ import { AdminDashboard } from './components/admin/admin-dashboard/admin-dashboa
 import { DoctorDashboard } from './components/doctor/doctor-dashboard/doctor-dashboard';
 import { PatientDashboard } from './components/patient/patient-dashboard/patient-dashboard';
 import { AuthGuard } from './guards/auth-guard';
+import { ForgotPassword } from './components/forgot-password/forgot-password';
+import { VerifyOtp } from './components/verifyotp/verifyotp';
+import { ResetPassword } from './components/reset-password/reset-password';
 
 const routes: Routes = [
  { path: 'admin-dashboard', component: AdminDashboard, canActivate: [AuthGuard] },
@@ -13,6 +16,9 @@ const routes: Routes = [
   { path: 'patient-dashboard', component: PatientDashboard, canActivate: [AuthGuard] },
   { path: 'login', component: Login },
   { path: 'register', component: Register },
+  {path:'forgot-password', component:ForgotPassword},
+  {path:'verify-otp', component:VerifyOtp},
+  {path:'reset-password', component:ResetPassword},
   { path: '**', redirectTo: 'login' }
   
 ];

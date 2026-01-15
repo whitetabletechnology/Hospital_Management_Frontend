@@ -13,6 +13,9 @@ import { PatientDashboard } from './components/patient/patient-dashboard/patient
 import { DoctorDashboard } from './components/doctor/doctor-dashboard/doctor-dashboard';
 import { AdminDashboard } from './components/admin/admin-dashboard/admin-dashboard';
 import { StaffDashboard } from './components/staff/staff-dashboard/staff-dashboard';
+import { ForgotPassword } from './components/forgot-password/forgot-password';
+import { ResetPassword } from './components/reset-password/reset-password';
+import { VerifyOtp } from './components/verifyotp/verifyotp';
 
 
 
@@ -24,7 +27,10 @@ import { StaffDashboard } from './components/staff/staff-dashboard/staff-dashboa
     PatientDashboard,
     DoctorDashboard,
     AdminDashboard,
-    StaffDashboard
+    StaffDashboard,
+    ForgotPassword,
+    VerifyOtp ,
+    ResetPassword
   ],
   imports: [
     BrowserModule,
