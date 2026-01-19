@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DoctorService } from '../../../../services/doctor.service';
 import { finalize } from 'rxjs';
@@ -17,7 +17,8 @@ export class DoctorList implements OnInit {
 
   constructor(
     private doctorService: DoctorService,
-    private router: Router
+    private router: Router,
+     private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -35,6 +36,7 @@ export class DoctorList implements OnInit {
       next: (data) => {
         console.log('Doctors API Response:',data);
         this.doctors = data;
+        this.cdr.detectChanges();
         console.log('Doctors loaded on refresh ',this.doctors.length);
         this.loading=false;
         

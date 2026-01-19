@@ -22,18 +22,18 @@
     </tr>
   </thead>
 
-  <tbody>
-    <tr *ngFor="let doc of doctors;let i=index">
-      <td>{{ i+1 }}</td>
-      <td>{{ doc.user?.name }}</td>
-      <td>{{ doc.user?.email }}</td>
-      <td>{{ doc.specialization }}</td>
-      <td>{{ doc.contactNumber }}</td>
-      <td>{{ doc.availability }}</td>
-      <td>
-        <button class="edit-btn" (click)="editDoctor(doc.id)">Edit</button>
-        <button class="delete-btn" (click)="deleteDoctor(doc.id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
+<tbody>
+  <tr *ngFor="let doc of doctors">
+    <td>{{ doc.id }}</td>
+    <td>{{ doc.user?.name }}</td>
+    <td>{{ doc.user?.email }}</td>
+    <td>{{ doc.specialization }}</td>
+    <td>{{ doc.contactNumber }}</td>
+    <td>{{ doc.availability }}</td>
+    <td>
+      <button (click)="editDoctor(doc.id)">Edit</button>
+      <button (click)="deleteDoctor(doc.id)">Delete</button>
+    </td>
+  </tr>
+</tbody>
 </table>

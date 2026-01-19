@@ -7,14 +7,21 @@ import { Observable } from 'rxjs';
 })
 export class DoctorService {
 
-  private baseUrl = "http://localhost:8080/api/admin/doctors";
+  private baseUrl = "http://localhost:8080/api/doctor";
 
   constructor(private http: HttpClient) {}
 
   // GET ALL DOCTORS
-  getAllDoctors(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
+getAllDoctors(): Observable<any[]> {
+  const token = localStorage.getItem('token');
+
+  return this.http.get<any[]>(this.baseUrl, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
 
   // CREATE DOCTOR
   createDoctor(data: any): Observable<any> {
