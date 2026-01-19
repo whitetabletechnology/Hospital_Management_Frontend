@@ -1,0 +1,51 @@
+.dashboard-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: #d7f072;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  background-color: #2a85df;
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.welcome-card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+}

@@ -1,1 +1,43 @@
-<p>admin-dashboard works!</p>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-dark bg-primary px-4 shadow-sm">
+  <span class="navbar-brand mb-0 h3">Hospital Admin Dashboard</span>
+
+  <button class="btn btn-light btn-sm" (click)="logout()">
+    <i class="bi bi-box-arrow-right"></i> Logout
+  </button>
+</nav>
+
+<div class="dashboard-container">
+  
+  <!-- Sidebar -->
+  <aside class="sidebar shadow-sm">
+    <h5 class="sidebar-title">Navigation</h5>
+
+    <ul class="nav-list">
+      <li (click)="goToDoctors()" class="nav-item">
+        <i class="bi bi-people"></i> Manage Doctors
+      </li>
+
+
+      <li (click)="navigate('patient')" class="nav-item">
+        <i class="bi bi-people"></i> Manage Patients
+      </li>
+
+      <li (click)="navigate('staff')" class="nav-item">
+        <i class="bi bi-person-workspace"></i> Manage Staff
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="welcome-card shadow-sm">
+      <h2>Welcome, Admin</h2>
+      <p class="text-muted">
+        Manage hospital operations using the navigation menu on the left.
+      </p>
+    </div>
+  </main>
+
+</div>

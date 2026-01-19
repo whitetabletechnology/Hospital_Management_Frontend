@@ -16,6 +16,11 @@ import { StaffDashboard } from './components/staff/staff-dashboard/staff-dashboa
 import { ForgotPassword } from './components/forgot-password/forgot-password';
 import { ResetPassword } from './components/reset-password/reset-password';
 import { VerifyOtp } from './components/verifyotp/verifyotp';
+import { DoctorList } from './components/admin/doctor-management/doctor-list/doctor-list';
+import { DoctorAdd } from './components/admin/doctor-management/doctor-add/doctor-add';
+import { DoctorEdit } from './components/admin/doctor-management/doctor-edit/doctor-edit';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,7 +35,10 @@ import { VerifyOtp } from './components/verifyotp/verifyotp';
     StaffDashboard,
     ForgotPassword,
     VerifyOtp ,
-    ResetPassword
+    ResetPassword,
+    DoctorList,
+    DoctorAdd,
+    DoctorEdit,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +46,15 @@ import { VerifyOtp } from './components/verifyotp/verifyotp';
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    HttpClientModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }
   ],
   bootstrap: [App]
 })

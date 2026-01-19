@@ -1,0 +1,39 @@
+<div class="doctor-header">
+  <h2>Doctors</h2>
+  <button class="add-btn" (click)="goToAddDoctor()">+ Add Doctor</button>
+</div>
+
+<!-- If empty -->
+<div *ngIf="doctors.length === 0" class="empty-message">
+  No Doctors Found
+</div>
+
+<!-- Table -->
+<table *ngIf="doctors.length > 0" class="doctor-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Specialization</th>
+      <th>Contact</th>
+      <th>Availability</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let doc of doctors;let i=index">
+      <td>{{ i+1 }}</td>
+      <td>{{ doc.user?.name }}</td>
+      <td>{{ doc.user?.email }}</td>
+      <td>{{ doc.specialization }}</td>
+      <td>{{ doc.contactNumber }}</td>
+      <td>{{ doc.availability }}</td>
+      <td>
+        <button class="edit-btn" (click)="editDoctor(doc.id)">Edit</button>
+        <button class="delete-btn" (click)="deleteDoctor(doc.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-import { Doctor } from "../services/doctor";
+import { DoctorService } from "../services/doctor.service";
 import { Patient } from "../services/patient";
 import { Role } from "./role.model";
 
@@ -11,6 +11,6 @@ export interface User {
   role: Role;
   createdAt?: string;       
   updatedAt?: string;     
-  doctor?: Doctor;          
+  doctor?: DoctorService;          
   patient?: Patient;        
 }
