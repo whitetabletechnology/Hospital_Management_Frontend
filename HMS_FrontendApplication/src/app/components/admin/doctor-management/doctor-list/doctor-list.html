@@ -1,39 +1,53 @@
-<div class="doctor-header">
-  <h2>Doctors</h2>
-  <button class="add-btn" (click)="goToAddDoctor()">+ Add Doctor</button>
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Doctors</h2>
+    <button class="btn btn-primary" (click)="goToAddDoctor()">
+      + Add Doctor
+    </button>
+  </div>
+
+  <div *ngIf="doctors.length === 0" class="alert alert-warning text-center">
+    No Doctors Found
+  </div>
+
+  <div class="table-responsive" *ngIf="doctors.length > 0">
+    <table class="table table-bordered table-hover align-middle">
+
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Specialization</th>
+          <th>Contact</th>
+          <th>Availability</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let doc of doctors">
+          <td>{{ doc.id }}</td>
+          <td>{{ doc.user?.name }}</td>
+          <td>{{ doc.user?.email }}</td>
+          <td>{{ doc.specialization }}</td>
+          <td>{{ doc.contactNumber }}</td>
+          <td>{{ doc.availability }}</td>
+          <td class="text-center">
+            <button
+              class="btn btn-sm btn-warning me-2"
+              (click)="editDoctor(doc.id)">
+              Edit
+            </button>
+            <button
+              class="btn btn-sm btn-danger"
+              (click)="deleteDoctor(doc.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<!-- If empty -->
-<div *ngIf="doctors.length === 0" class="empty-message">
-  No Doctors Found
-</div>
-
-<!-- Table -->
-<table *ngIf="doctors.length > 0" class="doctor-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Specialization</th>
-      <th>Contact</th>
-      <th>Availability</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-
-<tbody>
-  <tr *ngFor="let doc of doctors">
-    <td>{{ doc.id }}</td>
-    <td>{{ doc.user?.name }}</td>
-    <td>{{ doc.user?.email }}</td>
-    <td>{{ doc.specialization }}</td>
-    <td>{{ doc.contactNumber }}</td>
-    <td>{{ doc.availability }}</td>
-    <td>
-      <button (click)="editDoctor(doc.id)">Edit</button>
-      <button (click)="deleteDoctor(doc.id)">Delete</button>
-    </td>
-  </tr>
-</tbody>
-</table>
