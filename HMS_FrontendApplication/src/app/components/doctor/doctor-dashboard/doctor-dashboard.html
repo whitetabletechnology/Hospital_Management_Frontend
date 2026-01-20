@@ -1,1 +1,59 @@
-<p>doctor-dashboard works!</p>
+<nav class="navbar navbar-dark bg-primary px-4 shadow-sm">
+  <span class="navbar-brand mb-0 h3">Hospital Doctor Dashboard</span>
+
+  <button class="btn btn-light btn-sm" (click)="logout()">
+    <i class="bi bi-box-arrow-right"></i> Logout
+  </button>
+</nav>
+<div class="container mt-4">
+
+  <div *ngIf="doctors.length === 0" class="alert alert-warning text-center">
+    No Doctors Found
+  </div>
+
+  <div class="table-responsive" *ngIf="doctors.length > 0">
+    <table class="table table-bordered table-hover align-middle">
+
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Specialization</th>
+          <th>Contact</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let doc of paginatedDoctors">
+          <td>{{ doc.id }}</td>
+          <td>{{ doc.user?.name }}</td>
+          <td>{{ doc.user?.email }}</td>
+          <td>{{ doc.specialization }}</td>
+          <td>{{ doc.contactNumber }}</td>
+          <td>{{ doc.availability }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Pagination -->
+<div class="pagination-container" *ngIf="totalPages > 1">
+
+  <button class="page-btn"
+          [disabled]="currentPage === 1"
+          (click)="previousPage()">Previous</button>
+
+  <button *ngFor="let p of [].constructor(totalPages); let i = index"
+          class="page-btn"
+          [class.active]="currentPage === i + 1"
+          (click)="setPage(i + 1)">
+    {{ i + 1 }}
+  </button>
+
+  <button class="page-btn"
+          [disabled]="currentPage === totalPages"
+          (click)="nextPage()">Next</button>
+   </div>
+  </div>
+</div>
+
