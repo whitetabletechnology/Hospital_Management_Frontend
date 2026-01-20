@@ -27,7 +27,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let doc of doctors">
+        <tr *ngFor="let doc of paginatedDoctors">
           <td>{{ doc.id }}</td>
           <td>{{ doc.user?.name }}</td>
           <td>{{ doc.user?.email }}</td>
@@ -49,5 +49,25 @@
         </tr>
       </tbody>
     </table>
+    <!-- Pagination -->
+<div class="pagination-container" *ngIf="totalPages > 1">
+
+  <button class="page-btn"
+          [disabled]="currentPage === 1"
+          (click)="previousPage()">Previous</button>
+
+  <button *ngFor="let p of [].constructor(totalPages); let i = index"
+          class="page-btn"
+          [class.active]="currentPage === i + 1"
+          (click)="setPage(i + 1)">
+    {{ i + 1 }}
+  </button>
+
+  <button class="page-btn"
+          [disabled]="currentPage === totalPages"
+          (click)="nextPage()">Next</button>
+
+</div>
+
   </div>
 </div>
