@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'admin/doctor-management/doctor-list', component: DoctorList, canActivate: [AuthGuard] },
   { path: 'admin/doctor-management/doctor-add', component: DoctorAdd, canActivate: [AuthGuard] },
   { path: 'admin/doctor-management/doctor-edit/:id', component: DoctorEdit, canActivate: [AuthGuard] },
+  { path: 'admin/patient-management', component: PatientDashboard, canActivate: [AuthGuard] },
 
   // dashboards for other roles
   { path: 'admin-dashboard', component: AdminDashboard, canActivate: [AuthGuard] },

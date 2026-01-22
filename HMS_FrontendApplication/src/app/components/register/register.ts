@@ -39,7 +39,7 @@ export class Register implements OnInit {
     };
 
     this.authService.register(userData).subscribe({
-      next: (response) => {
+      next: (response:any) => {
         alert('Registered Successfully!');
         this.router.navigate(['/login']);
       },
